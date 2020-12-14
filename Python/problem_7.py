@@ -16,4 +16,4 @@ def primes(n):
 
 
 
-print(primes(1000000)[10000])
+print(primes(1000000)[10000]) 
