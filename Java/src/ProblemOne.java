@@ -1,4 +1,4 @@
-public class Main {
+public class ProblemOne {
 
     public static void main(String[] args) {
         ArithmeticProgression threes = new ArithmeticProgression(3.0, 333);
