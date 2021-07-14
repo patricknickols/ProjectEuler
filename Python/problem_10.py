@@ -1,11 +1,5 @@
-def list_constructor(n):
-    int_list = []
-    for i in range(n):
-        int_list.append(i)      #List is initialised with all values set to themselves
-    return int_list
-
 def primes(n):
-    prime_list = list_constructor(n)
+    prime_list = [i for i in range(n)]
     for i in range(2,n):
         if prime_list[i] != 0:   #Check that i has not been crossed off
             for j in range(2*i,n,i): #Cross off every number i away
@@ -15,9 +9,6 @@ def primes(n):
 
 def sum_primes(n):
     prime_list = primes(n)
-    sum = 0
-    for prime in prime_list:
-        sum += prime
-    return sum
+    return sum(prime_list)
 
 print(sum_primes(2000000))
