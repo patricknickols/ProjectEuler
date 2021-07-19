@@ -1,14 +1,12 @@
 def factorial(n):
     prod = 1
-    for i in range(1,n+1):
+    for i in range(2, n+1):
         prod *= i
     return prod
 
 def sum_digits(k):
-    sum = 0
-    for char in str(k):
-        sum += int(char)
-    return sum
+    digits = [int(char) for char in str(k)]
+    return sum(digits)
 
 def sum_digits_factorial(n):
     return sum_digits(factorial(n))
