@@ -1,21 +1,23 @@
-
-#Supply n to compute F_n for n > 0
-def fibonacci(n):
-    f_n = 0                                #F_0
-    f_n_minus_one = 1                      #F_-1
+def fib(n):
+    f_n = 0
+    f_n_minus_one = 1
     for i in range(n):
         f_n_copy = f_n
         f_n += f_n_minus_one
         f_n_minus_one = f_n_copy
     return f_n
 
-#Supply a bound upper_fib_bound to compute the sum of all even F_n such that F_n < upper_fib_bound
-def sum_of_even_fib(upper_fib_bound):
-    n = 3                                   #First even term is F_3
-    sum = 0
-    while fibonacci(n) <= upper_fib_bound:
-        sum += fibonacci(n)
-        n += 3                              # Every third term is even
-    return sum
+def is_even(n):
+    return n % 2 == 0
+
+def fib_generator(up_bound):
+    index = 1
+    while fib(index) < up_bound:
+        yield(fib(index))
+        index += 1
+
+def sum_of_even_fib(up_bound): # This function is slower (by a constant factor ~3) than it could be since it calculates unnecessary (odd) terms, see old implementation for a less readable, but faster alternative
+    even_fibs = [x for x in fib_generator(up_bound) if is_even(x)]
+    return sum(even_fibs)
 
 print(sum_of_even_fib(4000000))
